@@ -9,7 +9,9 @@ function App() {
     ];
 
     const [todos, setTodos] = useState(initialTodos);
-    const [checked, setChecked] = useState(false);
+    const [checked, setChecked] = useState(
+        new Array(todos.length).fill(false)
+    );
 
     const handleChange = () => {
         setChecked(!checked);
@@ -19,8 +21,8 @@ function App() {
         <ul>
             {todos.map((todo) =>
                 <li key={todo.id}>
-                    <label htmlFor="">
-                        <input type="checkbox" checked={checked} onChange={handleChange} />
+                    <label>
+                        <input type="checkbox" checked={checked.id} onChange={handleChange} />
                         {todo.text}
                     </label>
                 </li>
