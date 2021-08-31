@@ -1,20 +1,20 @@
-import React, {useRef, useState} from "react";
+import React, {useRef, useState, useEffect} from "react";
 import Todo from "./Todo";
 
 export default function Form() {
-    const initialTodos = []
 
     const inputRef = useRef();
-
-    const [todos, setTodos] = useState(initialTodos);
-
-    const [count, setCount] = useState(0)
+    const [todos, setTodos] = useState([]);
+    const [count, setCount] = useState(0);
 
     function clickHandler() {
         const inputElement = inputRef.current.value;
-        setTodos([...todos, {id: count, text: inputElement, state: false}])
-        console.log(inputElement)
+        if (inputElement === '') return;
+        setTodos([...todos, {id: count, text: inputElement}]);
+        console.log(inputElement);
+        inputRef.current.value = null;
     }
+
     return (
         <div>
             <input ref={inputRef} type="text" placeholder="Write a new todo" />

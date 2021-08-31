@@ -2,7 +2,7 @@ import React, {useState} from "react";
 
 export default function Todo(props) {
 
-    const todos =props.todos;
+    const todos = props.todos;
 
     const [checked, setChecked] = useState(
         new Array(todos.length).fill(false)
@@ -17,7 +17,7 @@ export default function Todo(props) {
             {todos.map((todo) =>
                 <li key={todo.id}>
                     <label>
-                        <input type="checkbox" checked={checked.id} onChange={handleChange} style={{marginRight: 10}}/>
+                        <input type="checkbox" id={todo.id} checked={checked[todo.id]} onChange={handleChange} style={{marginRight: 10}}/>
                         {todo.text}
                     </label>
                 </li>
