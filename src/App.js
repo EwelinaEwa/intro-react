@@ -18,11 +18,11 @@ function App() {
     }
 
     const list = (
-        <ul>
+        <ul style={{listStyle: "none"}}>
             {todos.map((todo) =>
                 <li key={todo.id}>
                     <label>
-                        <input type="checkbox" checked={checked.id} onChange={handleChange} />
+                        <input type="checkbox" checked={checked.id} onChange={handleChange} style={{marginRight: 10}}/>
                         {todo.text}
                     </label>
                 </li>
