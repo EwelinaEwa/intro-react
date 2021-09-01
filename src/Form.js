@@ -16,7 +16,7 @@ export default function Form() {
     function addTodo() {
         const inputElement = inputRef.current.value;
         if (inputElement === '') return;
-        setTodos([...todos, {id: count, text: inputElement}]);
+        setTodos([...todos, {id: count, text: inputElement, state: false}]);
         inputRef.current.value = null;
     }
 
@@ -24,8 +24,9 @@ export default function Form() {
         <div>
             <input ref={inputRef} type="text" placeholder="Write a new todo" />
             <br />
-            <button onClick={() => {addTodo(); setCount(count+1);}}>Add todo</button>
+            <button onClick={() => {addTodo(); setCount(count+1)}}>Add todo</button>
             <Todo todos={todos}/>
+            {/*{console.log(todos)}*/}
         </div>
     );
 }

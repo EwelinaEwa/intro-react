@@ -1,23 +1,27 @@
-import React, {useState} from "react";
+import React from "react";
 
 export default function Todo(props) {
 
     const todos = props.todos;
 
-    const [checked, setChecked] = useState(
-        new Array(todos.length).fill(false)
-    );
-
     const handleChange = () => {
-        setChecked(!checked);
+        {todos.map((todo) => {
+                if (document.getElementById(todo.id).checked === false) {
+                    document.getElementById(todo.id).removeAttribute("checked")
+                } else {
+                    document.getElementById(todo.id).setAttribute("checked", "true")
+                }
+            }
+        )}
     }
 
+    // console.log(document.getElementById({todo.id]));
     const list = (
         <ul style={{listStyle: "none"}}>
             {todos.map((todo) =>
                 <li key={todo.id}>
                     <label>
-                        <input type="checkbox" id={todo.id} checked={checked[todo.id]} onChange={handleChange} style={{marginRight: 10}}/>
+                        <input type="checkbox" id={todo.id} onChange={handleChange} style={{marginRight: 10}}/>
                         {todo.text}
                     </label>
                 </li>
