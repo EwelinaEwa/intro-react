@@ -1,17 +1,22 @@
 import React, {useRef, useState, useEffect} from "react";
 import Todo from "./Todo";
 
+const LOCAL_STORAGE_KEY = "todoApp.todos"
+
 export default function Form() {
 
     const inputRef = useRef();
-    const [todos, setTodos] = useState([]);
+    const [todos, setTodos] = useState(JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)) || []);
     const [count, setCount] = useState(0);
 
-    function clickHandler() {
+    useEffect(() => {
+        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(todos));
+    }, [todos]);
+
+    function addTodo() {
         const inputElement = inputRef.current.value;
         if (inputElement === '') return;
         setTodos([...todos, {id: count, text: inputElement}]);
-        console.log(inputElement);
         inputRef.current.value = null;
     }
 
@@ -19,7 +24,7 @@ export default function Form() {
         <div>
             <input ref={inputRef} type="text" placeholder="Write a new todo" />
             <br />
-            <button onClick={() => {clickHandler(); setCount(count+1);}}>Add todo</button>
+            <button onClick={() => {addTodo(); setCount(count+1);}}>Add todo</button>
             <Todo todos={todos}/>
         </div>
     );
