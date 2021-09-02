@@ -9,19 +9,21 @@ export default function Todo(props) {
                 if (document.getElementById(todo.id).checked === false) {
                     document.getElementById(todo.id).removeAttribute("checked")
                 } else {
-                    document.getElementById(todo.id).setAttribute("checked", "true")
+                    document.getElementById(todo.id).setAttribute("checked", "")
                 }
             }
         )}
     }
 
-    // console.log(document.getElementById({todo.id]));
+    // TODO: substitute handleChange with useEffect???
+    // TODO: save the checked values in the local storage
+
     const list = (
         <ul style={{listStyle: "none"}}>
             {todos.map((todo) =>
                 <li key={todo.id}>
-                    <label>
-                        <input type="checkbox" id={todo.id} onChange={handleChange} style={{marginRight: 10}}/>
+                    <label className="container">
+                        <input type="checkbox" id={todo.id} onChange={handleChange} className="checkbox"/>
                         {todo.text}
                     </label>
                 </li>

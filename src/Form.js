@@ -22,9 +22,8 @@ export default function Form() {
 
     return (
         <div>
-            <input ref={inputRef} type="text" placeholder="Write a new todo" />
-            <br />
-            <button onClick={() => {addTodo(); setCount(count+1)}}>Add todo</button>
+            <input ref={inputRef} type="text" placeholder="Write a new todo" className="new_todo"/>
+            <button className="submit" onClick={() => {addTodo(); setCount(count+1)}}>Add todo</button>
             <Todo todos={todos}/>
             {/*{console.log(todos)}*/}
         </div>
